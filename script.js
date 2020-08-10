@@ -4,21 +4,22 @@ $(document).ready(() => {
     // get values from user when button is clicked
     $("#search-button").on("click", () => {
         // get the city value from text input
-        const searchValue = $("#cityVal").val();
+        const cityVal = $("#cityVal").val();
         // make sure we are getting it
         // console.log(searchValue + " line 9");
         // get the state value from dropdown
         const stateVal = $("#stateVal").val();
         // make sure we are getting it
         // console.log(stateVal + " line 12");
+        const searchValue = `${cityVal}` + "," + `${stateVal}` + ",USA";
         // clear the city input box - state will always have a value
         $("#cityVal").val("");
         // call searchWeather and pass in city and state values
-        searchWeather(searchValue, stateVal);
+        searchWeather(searchValue);
     });
 
     // if we have past history items, clicking on it will use the past info
-    $(".history").on("click", "li", () => {
+    $(".history").on("click", "li", function() {
         searchWeather($(this).text());
       });
 
@@ -39,10 +40,10 @@ $(document).ready(() => {
 
     // make an api call passing in city and state values
     // hard coded usa into the url to prevent erroneous responses
-    function searchWeather(searchValue, stateVal) {
+    function searchWeather(searchValue) {
         $.ajax({
           type: "GET",
-          url: "https://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "," + stateVal + ",usa&appid=e1c35146e4a2edbeb98aaad7633513f6&units=imperial",
+          url: "https://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&appid=e1c35146e4a2edbeb98aaad7633513f6&units=imperial",
           dataType: "json",
           success: (data) => {
             console.log(data);

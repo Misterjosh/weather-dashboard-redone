@@ -26,13 +26,13 @@
                     <!-- columns set to 12 until i can fine tune the display -->
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <h5 class="mt-1">Enter a City:</h5>
-                        <input class="form-control" type="text" id="search-value" />
+                        <input  type="text" id="cityVal" />
                     </div>
                     <!-- upgrade from original - needed state input for accuracy -->
                     <div class="col-sm-12 col-md-12 col-lg-12">          
                         <h5 class="mt-1">Select a State</h5>
                         <div class="row"></div>
-                        <select class="form-control" id="exampleFormControlSelect1" id="stateVal">
+                        <select  id="stateVal">
                             <option value="al">Alabama</option>
                             <option value="ak">Alaska</option>
                             <option value="az">Arizona</option>
@@ -83,7 +83,8 @@
                             <option value="wv">West Virginia</option>
                             <option value="wi">Wisconsin</option>
                             <option value="wy">Wyoming</option>
-                        </select><button class="btn btn-primary" id="search-button"><i class="fa fa-search"></i> </button>
+                        </select>
+                        <button class="btn btn-primary" id="search-button">Search</button>
                     </div>
                 </div>
             </div>

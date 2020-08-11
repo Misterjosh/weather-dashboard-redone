@@ -1,7 +1,7 @@
 // makes the document load before providing JavaScript functionality
 $(document).ready(() => {
 
-    // get values from user when button is clicked
+    // get values from user when search button is clicked
     $("#search-button").on("click", () => {
         // get the city value from text input
         const cityVal = $("#cityVal").val();
@@ -14,6 +14,23 @@ $(document).ready(() => {
         $("#cityVal").val("");
         // call searchWeather and pass in city and state values
         searchWeather(searchValue);
+    });
+
+    // clear history button functionality
+    $("#clear-history").on("click", () => {
+      // if "history" is in local storage
+      if (localStorage.getItem("history")) {
+        // remove it
+        localStorage.removeItem("history");
+        // clear the history ul on the page
+        $(".history").val("");
+        // reload the page
+        location.reload();
+      // if not
+      } else {
+        // do nothing and stop
+        return
+      }
     });
 
     // if we have past history items, clicking on it will use the past info

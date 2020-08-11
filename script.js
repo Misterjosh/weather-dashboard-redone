@@ -72,12 +72,13 @@ $(document).ready(() => {
             card.append(cardBody);
             $("#today").append(card);
     
-            // call follow-up api endpoints
-            // lat = data.coord.lat;
-            // lon = data.coord.lon;
-            // console.log(lat, lon);
+            // get lat and lon ready for getUVIndex()
+            lat = data.coord.lat;
+            lon = data.coord.lon;
+
+            // get the five day forecast and uv index
             getForecast(searchValue);
-            // getUVIndex(searchValue);
+            getUVIndex(searchValue);
           }
         }); 
       }
@@ -121,5 +122,39 @@ $(document).ready(() => {
       })
     }
 
+    // uv index
+    // lat and lon are empty values until searchWeather() provides the vaules from its return
+    let lat = "";
+    let lon = "";
+
+    function getUVIndex() {
+      $.ajax({
+        type: "GET",
+        url:"https://api.openweathermap.org/data/2.5/uvi?appid=e1c35146e4a2edbeb98aaad7633513f6&lat=" + lat + "&lon=" + lon,
+        dataType: "json",
+        success: (currentUV) => {
+
+          // make a paragraph about the uv value and assign a color below
+          const dispUV = $("<p>").addClass("card-text").text("UV Index: " + currentUV.value);
+          // colors based on the scale associated with uv index on wikipedia.com
+            if(parseInt(currentUV.value) > 0 && parseInt(currentUV.value) <= 3){
+              dispUV.css("background-color", "green");
+            }
+            if(parseInt(currentUV.value) > 3 && parseInt(currentUV.value) <= 6){
+              dispUV.css("background-color", "yellow");
+            }
+            if(parseInt(currentUV.value) > 6 && parseInt(currentUV.value) <= 8){
+              dispUV.css("background-color", "orange");
+            }
+            if(parseInt(currentUV.value) > 8){
+              dispUV.css("background-color", "red");
+            }
+
+          // add UV index to the current weather card
+          $("#today .card-body").append(dispUV);
+          
+        }
+      })
+    }
 
 });

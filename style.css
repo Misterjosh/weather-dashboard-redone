@@ -1,0 +1,32 @@
+/* buttons */
+button {
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+/* state value dropbox */
+#stateVal {
+    height: 2.0em;
+    border-width: 1.25px;
+    border-color: black;
+}
+
+/* city value input */
+#cityVal {
+    border-width: 1.25px;
+    border-color: black;
+}
+
+/* header */
+header {
+    background-color: lightskyblue;
+}
+
+/* h1 */
+h1 {
+    text-shadow: 2px 2px 7px #111111;
+}
+
+/* search button */
+#search-button {
+    margin-bottom: 0.325em;
+}

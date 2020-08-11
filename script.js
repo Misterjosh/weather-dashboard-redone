@@ -3,6 +3,14 @@ $(document).ready(() => {
 
     // get values from user when search button is clicked
     $("#search-button").on("click", () => {
+        // city input validation
+        // if the value of city input is empty
+        if ($("#cityVal").val() == "") {
+          // give a warning
+          alert("Enter a city name!");
+          // then do nothing
+          return
+        } else {
         // get the city value from text input
         const cityVal = $("#cityVal").val();
         // get the state value from dropdown
@@ -14,6 +22,7 @@ $(document).ready(() => {
         $("#cityVal").val("");
         // call searchWeather and pass in city and state values
         searchWeather(searchValue);
+      }
     });
 
     // clear history button functionality

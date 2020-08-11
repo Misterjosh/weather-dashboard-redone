@@ -104,7 +104,7 @@ $(document).ready(() => {
  
               // new card content
               const title = $("<h5>").addClass("card-title").text(fiveDay.city.name + " (" + new Date(fiveDay.list[i].dt_txt).toLocaleDateString() + ")");
-              const card = $("<div>").addClass("card col-sm-3");
+              const card = $("<div>").addClass("card col-sm-12 col-md-5 col-lg-2 mr-3");
               const wind = $("<p>").addClass("card-text").text("Wind Speed: " + fiveDay.list[i].wind.speed + " MPH");
               const humid = $("<p>").addClass("card-text").text("Humidity: " + fiveDay.list[i].main.humidity + "%");
               const temp = $("<p>").addClass("card-text").text("Temperature: " + fiveDay.list[i].main.temp + " °F");
